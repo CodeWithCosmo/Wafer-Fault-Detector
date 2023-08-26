@@ -1,7 +1,7 @@
-# 📄✏ Sensor Fault Detection Project
+# **`Wafer Fault Detection Project`**
 ## The aim of this project is to develop an automated sensor fault detection system for Scania trucks that can identify and diagnose sensor faults in real-time. The system should be able to detect faults in a wide range of sensors, including those used to monitor engine performance, fuel efficiency, and safety features. The goal is to improve the overall reliability and safety of Scania trucks by quickly identifying and addressing sensor faults, reducing the risk of accidents and downtime caused by equipment failure.
 
-#### Dataset is taken from Kaggle and stored in mongodb
+### Dataset is taken from Kaggle and stored in mongodb.
 
 
 💿 Installing
@@ -9,14 +9,15 @@
 ```
 conda create --prefix venv python==3.8 -y
 ```
+After creating a virtual environment, activate it by following cmd 
 ```
 conda activate venv/
-````
+```
 2. Install Requirements and setup
 ```
 pip install -r requirements.txt
 ```
-5. Run Application
+3. Run Application
 ```
 python app.py
 ```
