@@ -1,7 +1,8 @@
 # **`Wafer Fault Detection Project`**
 ## The aim of this project is to develop an automated sensor fault detection system for Scania trucks that can identify and diagnose sensor faults in real-time. The system should be able to detect faults in a wide range of sensors, including those used to monitor engine performance, fuel efficiency, and safety features. The goal is to improve the overall reliability and safety of Scania trucks by quickly identifying and addressing sensor faults, reducing the risk of accidents and downtime caused by equipment failure.
 
-### Dataset is taken from Kaggle and stored in mongodb.
+> ## Try it out at [Wafer Fault Detector](https://wafer-fault-detector.onrender.com)
+
 
 ## Poblem Statement:  
 ### The inputs of various sensors for different wafers have been provided. In electronics, a wafer (also called a slice or substrate) is a thin slice of semiconductor used for the fabrication of integrated circuits. The goal is to build a machine learning model which predicts whether a wafer needs to be replaced or not(i.e., whether it is working or not) based on the inputs from various sensors. There are two classes: +1 and -1. 
@@ -44,5 +45,3 @@ conda activate env/<env_name>
 ```
 pip install -r requirements.txt
 ```
-
-> ## Try it out at [Wafer Fault Detector](https://wafer-fault-detector.onrender.com)
