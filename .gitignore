@@ -9,8 +9,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 build/
-artifacts/
-predictions_artifacts/
+prediction_artifacts/
 testing_artifacts/
 logs/
 develop-eggs/
