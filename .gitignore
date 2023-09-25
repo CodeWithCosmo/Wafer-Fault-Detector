@@ -1,3 +1,4 @@
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -9,8 +10,6 @@ __pycache__/
 # Distribution / packaging
 .Python
 build/
-notebooks/
-export_data.py
 prediction_artifacts/
 testing_artifacts/
 logs/
