@@ -1,3 +1,0 @@
-[ 2023-08-26 14:28:55,655 ] 187 werkzeug - WARNING -  * Debugger is active!
-[ 2023-08-26 14:28:55,658 ] 187 werkzeug - INFO -  * Debugger PIN: 719-912-780
-[ 2023-08-26 14:29:28,974 ] 187 werkzeug - INFO -  * Detected change in 'D:\\Projects\\Wafer Fault Detection\\app.py', reloading

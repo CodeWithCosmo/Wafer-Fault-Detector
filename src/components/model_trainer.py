@@ -1,21 +1,16 @@
 import os
 import sys
 from dataclasses import dataclass
-
-from sklearn.ensemble import (
-    AdaBoostClassifier,
-    GradientBoostingClassifier,
-    RandomForestClassifier,
-)
-from sklearn.metrics import accuracy_score 
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import AdaBoostClassifier,GradientBoostingClassifier,RandomForestClassifier
+from sklearn.metrics import accuracy_score
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from xgboost import XGBClassifier
 
-from src.constant import *
 from src.exception import CustomException
 from src.logger import logging
-from src.utils import evaluate_models, load_object, save_object, upload_file
+from src.utils import evaluate_models, load_object, save_object
 
 
 @dataclass
@@ -57,6 +52,7 @@ class ModelTrainer:
             )
 
             models = {
+                "Logistic Regression": LogisticRegression(),
                 "Random Forest": RandomForestClassifier(),
                 "Decision Tree": DecisionTreeClassifier(),
                 "Gradient Boosting": GradientBoostingClassifier(),
@@ -80,38 +76,24 @@ class ModelTrainer:
 
             best_model = models[best_model_name]
 
-            if best_model_score < 0.6:
+            if best_model_score < 0.8:
                 raise Exception("No best model found")
 
             logging.info(f"Best found model on both training and testing dataset")
 
             preprocessing_obj = load_object(file_path=preprocessor_path)
 
-            custom_model = CustomModel(
-                preprocessing_object=preprocessing_obj,
-                trained_model_object=best_model,
-            )
+            custom_model = CustomModel(preprocessing_object=preprocessing_obj,trained_model_object=best_model)
 
-            logging.info(
-                f"Saving model at path: {self.model_trainer_config.trained_model_file_path}"
-            )
+            logging.info(f"Saving model at path: {self.model_trainer_config.trained_model_file_path}")
 
-            save_object(
-                file_path=self.model_trainer_config.trained_model_file_path,
-                obj=custom_model,
-            )
+            save_object(file_path=self.model_trainer_config.trained_model_file_path,obj=custom_model)
 
             predicted = best_model.predict(x_test)
 
-            accuracy_score = accuracy_score(y_test, predicted)
+            Score = accuracy_score(y_test, predicted)           
 
-            upload_file(
-                from_filename=self.model_trainer_config.trained_model_file_path,
-                to_filename="model.pkl",
-                bucket_name=AWS_S3_BUCKET_NAME,
-            )
-
-            return accuracy_score
+            return Score
 
         except Exception as e:
             raise CustomException(e, sys)

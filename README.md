@@ -3,29 +3,46 @@
 
 ### Dataset is taken from Kaggle and stored in mongodb.
 
+## Poblem Statement:  
+### The inputs of various sensors for different wafers have been provided. In electronics, a wafer (also called a slice or substrate) is a thin slice of semiconductor used for the fabrication of integrated circuits. The goal is to build a machine learning model which predicts whether a wafer needs to be replaced or not(i.e., whether it is working or not) based on the inputs from various sensors. There are two classes: +1 and -1. 
 
-💿 Installing
-1. Environment setup.
+- ## +1 means that the wafer is in a working condition and it doesn’t need to be replaced.
+
+- ## -1 means that the wafer is faulty and it needs to be replaced. 
+
+## Data Description - 
+### The client will send data in multiple sets of files in batches at a given location. Data will contain Wafer names and 590 columns of different sensor values for each wafer. The last column will have the "Good/Bad" value for each wafer.
+
+## "Good/Bad" column will have two unique values +1 and -1.  
+
+ - ## "+1" represents Good wafer.
+
+- ## "-1" represents Bad Wafer. 
+
+
+* ## Applications Used
+1. [Python 3.9](https://www.python.org/)
+2. [Anaconda](https://www.anaconda.com/)
+3. [VSCodeIDE](https://code.visualstudio.com/)
+4. [ThunderClient](https://www.thunderclient.com/)
+5. [GitCLI](https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line)
+6. [Github Account](https://github.com)
+7. [Docker](https://www.docker.com/)
+8. [Render](https://render.com/)
+
+
+* ## **How to setup ?**
+1. ## Create a new environment
 ```
-conda create --prefix venv python==3.8 -y
+conda create --prefix env/<env_name> python=3.9 -y
 ```
-After creating a virtual environment, activate it by following cmd 
+2. ## Activate the newly created environment
 ```
-conda activate venv/
+conda activate env/<env_name>
 ```
-2. Install Requirements and setup
+3. ## Install the requirements
 ```
 pip install -r requirements.txt
 ```
-3. Run Application
-```
-python app.py
-```
 
-🔧 Built with
-- flask
-- Python 3.8
-- Machine learning
-- Scikit learn
-- 🏦 Industrial Use Cases
-
+> ## Try it out at [Wafer Fault Detector]()

@@ -1,7 +1,7 @@
-from flask import Flask, render_template, jsonify, request, send_file
+import sys
+from flask import Flask, render_template, request, send_file
 from src.exception import CustomException
 from src.logger import logging as lg
-import sys
 from src.pipeline.train_pipeline import TrainPipeline
 from src.pipeline.predict_pipeline import PredictionPipeline
 
@@ -9,42 +9,32 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Welcome to Wafer Fault Detection home page."
+    return render_template("home.html")
 
 
 @app.route("/train")
-def train_route():
+def train():
     try:
-        train_pipeline = TrainPipeline()
-        train_pipeline.run_pipeline()
+        score = TrainPipeline().initiate_train_pipeline()
 
-        return "Training Completed."
+        return render_template("train.html",text = f"Accuracy Score: {score}")
 
     except Exception as e:
         raise CustomException(e,sys)
 
-@app.route('/upload', methods=['POST', 'GET'])
-def upload():
-    
+@app.route('/predict', methods=['POST', 'GET'])
+def predict():    
     try:
-
-
         if request.method == 'POST':
             prediction_pipeline = PredictionPipeline(request)
-            prediction_file_detail = prediction_pipeline.run_pipeline()
+            prediction_file_detail = prediction_pipeline.initiate_predict_pipeline()
 
-            lg.info("prediction completed. Downloading prediction file.")
+            lg.info("Prediction completed, Downloading prediction file.")
             return send_file(prediction_file_detail.prediction_file_path,
                             download_name= prediction_file_detail.prediction_file_name,
                             as_attachment= True)
-
-
         else:
-            return render_template('upload_file.html')
+            return render_template('predict.html')
+        
     except Exception as e:
-        raise CustomException(e,sys)
-    
-
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug= True)
+        raise CustomException(e,sys)    
