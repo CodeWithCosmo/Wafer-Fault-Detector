@@ -45,4 +45,4 @@ conda activate env/<env_name>
 pip install -r requirements.txt
 ```
 
-> ## Try it out at [Wafer Fault Detector]()
+> ## Try it out at [Wafer Fault Detector](https://wafer-fault-detector.onrender.com)
